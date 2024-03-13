@@ -1,0 +1,36 @@
+html,
+body,
+.container-fluid {
+  height: 100%;
+}
+
+.navbar {
+  height: 100%;
+}
+
+.navbar-nav {
+  width: 100%;
+  text-align: center;
+}
+
+.navbar-nav .nav-item {
+  width: 100%;
+}
+
+.navbar-toggler {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .navbar-nav {
+    text-align: left;
+  }
+
+  .navbar-nav .nav-item {
+    width: auto;
+  }
+
+  .navbar-toggler {
+    display: block;
+  }
+}
