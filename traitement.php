@@ -38,16 +38,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $numchef = null;
             }
 
-
+            echo "avant execution de la requete";
+            echo "$date_debut $date_fin";
             $req->execute(array(
                 'intitule' => $intitule,
                 'debut' => $date_debut,
                 'fin' => $date_fin,
                 'numchef' => $numchef
             ));
-
+            echo "requette executeer";
             echo "Projet créé avec succès.";
-            header("Location: affiche_projet.php");
+            header("Location: affiche_infoprojet.php");
             exit; // Assurez-vous de terminer le script après la redirection
 
         } catch (PDOException $e) {

@@ -100,19 +100,6 @@
                              emp emp2 ON ap.num_Emp = emp2.Numero; ");
 
 
-
-                        /*
-   // paramètre à inserer dans la requête
-   $projet='%';
-   $datedebut='%';
-   $chefprojet='%';
-   $employe='%';
-   $fonction='%';
-   $mission='%';
-   $dateaffectation='%';
-*/
-
-
                         // exécution de la requête
                         $req->execute();
                         while ($donnees = $req->fetch()) // On affiche chaque entrée une à une

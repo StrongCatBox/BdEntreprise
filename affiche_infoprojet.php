@@ -26,12 +26,12 @@
 
     </header>
 
-    <!--Header-->
-
 
     <div class="container-fluid">
+
         <div class="row">
-            <!-- Navbar à gauche -->
+
+
             <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
@@ -41,7 +41,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/SQL/Projet%20-%201/affiche_projet.php">
                                 Infos sur les projets
                             </a>
                         </li>
@@ -50,19 +50,26 @@
                 </div>
             </nav>
 
-            <!-- Contenu principal -->
+
+
+
+
+
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <h1>Liste des livres</h1>
-                <table class="table table-striped" id="customers">
-                    <tr>
-                        <th>Nom du projet</th>
-                        <th>Intitulé</th>
-                        <th>Nom du chef</th>
-                        <th>Nom employé</th>
-                        <th>Fonction</th>
-                        <th>mission</th>
-                        <th>date d'affection</th>
-                    </tr>
+
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">numProjet</th>
+                            <th scope="col">intitule</th>
+                            <th scope="col">debut</th>
+                            <th scope="col">fin</th>
+                            <th scope="col">num chef</th>
+
+
+                        </tr>
+                    </thead>
+
                     <?php
                     // paramètres de connexion
                     $host = "localhost";
@@ -73,31 +80,31 @@
                     //tentative de connexion
                     try {
                         $bdd = new PDO("mysql:host=$host;dbname=$bd;chartset=utf8", $user, $password);
-                        // preparation d'une requête requete a trou pour plus de securité
-                        $req = $bdd->prepare('SELECT * FROM livre WHERE auteur LIKE :auteur AND genre LIKE :genre ');
-                        // paramètre à inserer dans la requête
-                        $genre = '%';
-                        $auteur = '%';
+                        // preparation d'une requête = requête à trou pour plus de sécurité
+                        $req = $bdd->prepare("SELECT * FROM projet ");
+
+                        echo "execution de la requete";
+
+
                         // exécution de la requête
-                        $req->execute(array('auteur' => $auteur, 'genre' => $genre));
+                        $req->execute();
                         while ($donnees = $req->fetch()) // On affiche chaque entrée une à une
                         {
 
-                            $numero   = $donnees['numlivre'];
-                            $titre    = $donnees['Titre'];
-                            $auteur   = $donnees['auteur'];
-                            $genre    = $donnees['genre'];
-                            $prix     = $donnees['prix'];
+                            $numProjet   = $donnees['numProjet'];
+                            $intitule    = $donnees['intitule'];
+                            $debut   = $donnees['debut'];
+                            $fin    = $donnees['fin'];
+                            $numchef     = $donnees['numchef'];
 
-                            echo "<tr><td>$numero</td><td>$titre</td><td>$auteur</td>
-       <td>$genre</td><td>$prix</td></tr>";
+                            echo "<tr><td>$numProjet</td><td>$intitule</td><td>$debut</td>
+       <td>$fin</td><td>$numchef</td></tr>";
                         }
                         $req->closeCursor(); // Termine le traitement de la requête
                     } catch (Exception $e) {
                         die("erreur de connexion");
                     }
                     ?>
-                </table>
             </main>
         </div>
     </div>
